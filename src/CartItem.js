@@ -11,8 +11,12 @@ class CartItem extends React.Component{
           title:'phone',
           qty:1,
           img:''
-
         }
+       // this.increaseQuantity=this.increaseQuantity.bind(this);
+    }
+    // arrow function binds the value of this keyword to the reference of this class
+    increaseQuantity=()=> {
+     console.log(this.state);
     }
   render(){
     // object destructuring
@@ -28,7 +32,7 @@ class CartItem extends React.Component{
                 <div style={{color:'blue'}}>{qty}</div>
                 <div className="cart-item-action">
                     {/* Buttons */}
-                    <img alt="increase" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/3524/3524388.png" />
+                    <img alt="increase" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/3524/3524388.png" onClick={this.increaseQuantity} />
                     <img alt="decrease" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/992/992683.png" />
                     <img alt="delete" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" />
 
