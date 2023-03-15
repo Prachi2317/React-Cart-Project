@@ -6,6 +6,7 @@ class CartItem extends React.Component{
     
     constructor(){
         super();
+        //console.log(this);
         this.state={
           price:999,
           title:'phone',
@@ -33,16 +34,20 @@ class CartItem extends React.Component{
       // if previous state requires use 
       qty:prevState.qty+1
     }
+    }
+    // we are apssing another argument as a callback function it is going to be executed when the setState function completes its call.so it gives you updated state value
+    ,()=>{
+      console.log('this.state',this.state);
     });
     }
     decreaseQuantity=()=>{
       this.setState((prevState)=>{
-         if(prevState.qty>0){
-          return {
-            qty:prevState.qty-1
-          }
+         if(prevState.qty===0){
+          return;
          }
-        
+        return {
+          qty:prevState.qty-1
+        }
       });
     }
   render(){
