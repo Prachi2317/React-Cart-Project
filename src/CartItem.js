@@ -4,17 +4,7 @@ import React from "react";
 class CartItem extends React.Component{
    // when i am inheriting something from parent class then you need to call the  constructor of parent class and (super) call the constructor of parent class
     
-    constructor(){
-        super();
-        //console.log(this);
-        this.state={
-          price:999,
-          title:'phone',
-          qty:1,
-          img:''
-        }
-       // this.increaseQuantity=this.increaseQuantity.bind(this);
-    }
+  
     // arrow function binds the value of this keyword to the reference of this class
     increaseQuantity=()=> {
       // by using (this.state.qty++) only increases the qty value but react doesn't know that it has to re render the component .to solve this we use (setState) function thai is inherited from component class
@@ -52,14 +42,15 @@ class CartItem extends React.Component{
     }
   render(){
     // object destructuring
-    const{price,title,qty}=this.state;
+    const{price,title,qty}=this.props.product;
+    // console.log(this.props.product)
     return(
         <div className="cart-item">
             <div className="left-block">
                <img style={styles.image}/>
             </div>
             <div className="right-block">
-                <div style={{fontSize:25,color:'blue'}}>{this.state.title}</div>
+                <div style={{fontSize:25,color:'blue'}}>{title}</div>
                 <div style={{color:'blue'}}>{price}</div>
                 <div style={{color:'blue'}}>{qty}</div>
                 <div className="cart-item-action">
