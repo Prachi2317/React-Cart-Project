@@ -15,13 +15,13 @@ class Cart extends React.Component{
         id:1
       },{
         price:999,
-        title:'phone',
+        title:'tv',
         qty:1,
         img:'',
         id:2
       },{
         price:999,
-        title:'phone',
+        title:'camera',
         qty:1,
         img:'',
         id:3
@@ -49,7 +49,16 @@ handleDecreaseQunatity=(product)=>{
       products:products
     })
   }
-
+ 
+  handleDeleteProduct=(id)=>{
+    const {products}=this.state
+    const items=products.filter((item)=>{
+            return item.id!==id;
+    })
+      this.setState({
+        products:items
+      })
+  }
 
   render(){
     const {products}=this.state;
@@ -62,6 +71,7 @@ handleDecreaseQunatity=(product)=>{
           key={product.id}
           onIncreaseQuantity={this.handleIncreaseQunatity}
           onDecreaseQuantity={this.handleDecreaseQunatity}
+          onDeleteProduct={this.handleDeleteProduct}
           
           />
         })
