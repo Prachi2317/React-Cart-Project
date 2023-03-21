@@ -87,7 +87,7 @@ handleDecreaseQunatity=(product)=>{
       onDecreaseQuantity={this.handleDecreaseQunatity}
       onDeleteProduct={this.handleDeleteProduct}
      />
-     <diV style={{padding:10,fontSize:20,color:'pink'}}>Total:{this.getCartTotal()}</diV>
+     <div style={{padding:10,fontSize:20,color:'pink'}}>Total:{this.getCartTotal()}</div>
       </div>
     );
    }
