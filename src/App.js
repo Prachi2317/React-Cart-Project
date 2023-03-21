@@ -11,15 +11,38 @@ class App extends React.Component {
     }
   }
   componentDidMount(){
+
+    // firebase
+    //   .firestore()
+    //   .collection('products')
+    //   .get()
+    //   .then((snapshot)=>{
+    //     //console.log(snapshot);
+    //     snapshot.docs.map((doc)=>{
+          
+    //       // data fumction retrives all the data from 
+    //       console.log(doc.data());
+    //     });
+    //     const products=snapshot.docs.map((doc)=>{
+    //       const data=doc.data();
+    //       data['id']=doc.id;
+    //       return data;
+    //     })
+    //     console.log(products);
+    //     this.setState({
+    //       // when you have the same name of variable and key so you can omit key name
+    //      // products
+    //       products:products,
+    //       loading:false
+
+    //     })
+    //   })
+
     firebase
       .firestore()
       .collection('products')
-      .get()
-      .then((snapshot)=>{
-        //console.log(snapshot);
-        snapshot.docs.map((doc)=>{
-          
-          // data fumction retrives all the data from 
+      .onSnapshot((snapshot)=>{
+        snapshot.docs.map((doc)=>{ 
           console.log(doc.data());
         });
         const products=snapshot.docs.map((doc)=>{
@@ -29,8 +52,6 @@ class App extends React.Component {
         })
         console.log(products);
         this.setState({
-          // when you have the same name of variable and key so you can omit key name
-         // products
           products:products,
           loading:false
 
