@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import * as firebase from "firebase/app"
-import 'firebase/firestore'
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
 const firebaseConfig = {
   apiKey: "AIzaSyBpGn49bEBd5nLwve4s3O3ecxl0CfBYi7A",
   authDomain: "cart-407d8.firebaseapp.com",
@@ -13,8 +15,14 @@ const firebaseConfig = {
   appId: "1:527567310169:web:7ec861f9a4f9584f8e9048"
 };
 
-// Initialize Firebase
- firebase.initializeApp(firebaseConfig);
+// Use this to initialize the firebase App
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+// Use these for db & auth
+const db = firebaseApp.firestore();
+const auth = firebase.auth();
+
+export { auth, db };
 
 
 
