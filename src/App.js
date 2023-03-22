@@ -103,12 +103,23 @@ docRef
  
   handleDeleteProduct=(id)=>{
     const {products}=this.state
-    const items=products.filter((item)=>{
-            return item.id!==id;
-    })
-      this.setState({
-        products:items
-      })
+    // const items=products.filter((item)=>{
+    //         return item.id!==id;
+    // })
+    //   this.setState({
+    //     products:items
+    //   })
+    const docRef=this.db.collection('products').doc(id);
+
+    docRef
+         .delete()
+         .then(()=>{
+          console.log("deleted sucessfully");
+         })
+         .catch((error)=>{
+          console.log('Error',error);
+         })
+    
   }
   getCartCount=()=>{
     const {products}=this.state
