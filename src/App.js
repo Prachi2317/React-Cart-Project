@@ -61,11 +61,22 @@ class App extends React.Component {
   }
 handleIncreaseQunatity=(product)=>{
   const {products}=this.state;
-const index=products.indexOf(product);
-  products[index].qty+=1;
-  this.setState({
-    products:products
-  })
+ const index=products.indexOf(product);
+//   products[index].qty+=1;
+//   this.setState({
+//     products:products
+//   })
+const docRef=this.db.collection('products').doc(products[index].id);
+docRef
+     .update({
+      qty:products[index].qty+1
+     })
+     .then(()=>{
+      console.log("updated sucessful");
+     })
+     .catch((error)=>{
+      console.log('Error',error);
+     })
 }
 handleDecreaseQunatity=(product)=>{
   const {products}=this.state;
