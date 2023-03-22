@@ -84,10 +84,21 @@ handleDecreaseQunatity=(product)=>{
   if(products[index].qty===0){
     return;
   }
-    products[index].qty-=1;
-    this.setState({
-      products:products
-    })
+    // products[index].qty-=1;
+    // this.setState({
+    //   products:products
+    // })
+    const docRef=this.db.collection('products').doc(products[index].id);
+docRef
+     .update({
+      qty:products[index].qty-1
+     })
+     .then(()=>{
+      console.log("updated sucessful");
+     })
+     .catch((error)=>{
+      console.log('Error',error);
+     })
   }
  
   handleDeleteProduct=(id)=>{
